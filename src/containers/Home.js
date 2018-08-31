@@ -9,6 +9,10 @@ import {
   MenuItem,
   TextField
 } from '@material-ui/core';
+import { selectedCategory } from '../redux/reducers/selected_category';
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import NavigationIcon from '@material-ui/icons/Navigation';
 
 const styles = () => ({
@@ -38,14 +42,24 @@ const sorts = [
 ];
 
 class Home extends Component {
+  handleChange = event => {
+    if (event.target.value) {
+      this.props.actions.selectedCategory(event.target.value);
+      // this.props.actions.getCategoryPost(event.target.value);
+    } else {
+      // this.props.actions.getAllPosts();
+    }
+    this.props.history.push(`/${event.target.value}`);
+  };
   render() {
     const { classes } = this.props;
+    const { category = '' } = this.props.match.params;
     return (
       <div>
         <Paper elevation={5}>
           <RadioGroup
             className={classes.selector}
-            value=""
+            value={category}
             onChange={this.handleChange}
           >
             <FormControlLabel value="" control={<Radio />} label="All" />
@@ -89,4 +103,32 @@ class Home extends Component {
   }
 }
 
-export default withStyles(styles)(Home);
+const mapStateToProps = state => ({
+  // post: state.post,
+  selectedCategory: state.selectedCategory.category
+  // categoryPost: state.categoryPost.posts,
+  // selectedSort: state.selectedSort.sort
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(
+    {
+      // getAllPosts,
+      // deletePost,
+      // vote,
+      selectedCategory
+      // getCategoryPost,
+      // selectedSort
+    },
+    dispatch
+  ),
+  dispatch
+});
+
+export default compose(
+  withStyles(styles, { name: 'Home' }),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Home);
