@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import 'typeface-roboto';
 import Header from './constants/header';
 import Home from './containers/Home';
+import EditImage from './containers/EditImage';
 import './App.css';
 
 class App extends Component {
@@ -21,28 +22,9 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/addPost" component={AddPost} /> */}
           <Route exact path="/:category/" component={Home} />
-          {/* <Route exact path="/editPost/:postId" component={AddPost} />
-          <Route exact path="/editComment/:commentId" component={EditComment} />
-          <Route exact path="/:category/:postId" component={PostDetails} /> */}
+          <Route exact path="/editPost/:imageId" component={EditImage} />
         </Switch>
-        <form className="uploader" encType="multipart/form-data">
-          <input
-            accept="image/*"
-            type="file"
-            onChange={handleFileUpload}
-            ref={ref => {
-              this.fileInputRef = ref;
-            }}
-            id="file"
-            multiple
-          />
-        </form>
-        {this.state.photos.map(photo => (
-          <img src={photo.name} />
-        ))}
-        {/* {this.state.photos ? <img src={this.state.photos[0].name} /> : <div />} */}
       </div>
     );
   }
