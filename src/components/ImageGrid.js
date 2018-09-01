@@ -36,7 +36,6 @@ const styles = {
 };
 const ImageGrid = props => {
   const { img = {}, classes = {}, deleteImage = () => {} } = props;
-  console.log(36, props);
 
   if (_.isEmpty(img)) return <React.Fragment />;
   return (

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { editImage } from '../redux/reducers/add_image';
 import {
   Paper,
-  FormControlLabel,
   withStyles,
   Button,
   Typography,

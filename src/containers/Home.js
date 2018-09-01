@@ -20,7 +20,6 @@ import { selectedCategory } from '../redux/reducers/selected_category';
 import { selectedSort } from '../redux/reducers/selected_sort';
 import { addImage, deleteImage, editImage } from '../redux/reducers/add_image';
 import { toXls } from '../helpers/toXls';
-import { Link } from 'react-router-dom';
 import ImageGrid from '../components/ImageGrid';
 import ImageList from '../components/ImageList';
 import cx from 'classnames';
@@ -103,10 +102,6 @@ class Home extends Component {
       ids.reverse();
     } else {
     }
-
-    console.log(53, this.props);
-    console.log(67, this.state);
-
     return (
       <div>
         <Paper elevation={5}>
