@@ -208,25 +208,21 @@ class Home extends Component {
             className={cx(classes.standardRow, classes.wrap, classes.spaceEven)}
           >
             {ids.map(image => (
-              <div>
-                <ImageGrid
-                  key={image}
-                  img={allImages[image]}
-                  deleteImage={this.props.actions.deleteImage}
-                />
-              </div>
+              <ImageGrid
+                key={image}
+                img={allImages[image]}
+                deleteImage={this.props.actions.deleteImage}
+              />
             ))}
           </div>
         ) : (
           <div className={cx(classes.wrap, classes.spaceEven)}>
             {ids.map(image => (
-              <div>
-                <ImageList
-                  key={image}
-                  img={allImages[image]}
-                  deleteImage={this.props.actions.deleteImage}
-                />
-              </div>
+              <ImageList
+                key={image}
+                img={allImages[image]}
+                deleteImage={this.props.actions.deleteImage}
+              />
             ))}
           </div>
         )}
