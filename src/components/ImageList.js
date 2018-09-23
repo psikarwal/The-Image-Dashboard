@@ -1,9 +1,7 @@
 import React from 'react';
 import { withStyles, Paper, IconButton } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import cx from 'classnames';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import _ from 'lodash';
@@ -22,7 +20,7 @@ const styles = {
 };
 
 const ImageList = props => {
-  const { img = {}, classes = {}, deleteImage = () => {} } = props;
+  const { img = {}, deleteImage = () => {} } = props;
   if (_.isEmpty(img)) return <React.Fragment />;
   return (
     <Paper
@@ -33,6 +31,7 @@ const ImageList = props => {
         <img
           src={img.src}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          alt=""
         />
       </div>
       <div style={{ width: '40%' }}>
@@ -83,7 +82,9 @@ const ImageList = props => {
             {img.tags ? (
               <Typography style={{ color: 'red' }}>Tags: {img.tags}</Typography>
             ) : (
-              <Typography style={{ color: 'red' }}>No tags yet 😥</Typography>
+              <Typography style={{ color: 'red' }}>
+                No tags yet <span>😥</span>
+              </Typography>
             )}
             {img.tags ? (
               <Typography>{img.description}</Typography>
