@@ -2,6 +2,7 @@
   "name": "image-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://psikarwal.github.io/myGallery/",
   "dependencies": {
     "@material-ui/core": "^3.0.1",
     "@material-ui/icons": "^3.0.1",
